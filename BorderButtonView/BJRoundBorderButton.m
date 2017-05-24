@@ -29,12 +29,16 @@
     self.corners = corners;
     self.radius = radius;
     
-    [self layoutIfNeeded];
+    [self clipAndBorder];
 }
 
 - (void)layoutSubviews {
     [super layoutSubviews];
     
+    [self clipAndBorder];
+}
+
+- (void)clipAndBorder {
     if (self.borderLayer.superlayer) {
         [self.borderLayer removeFromSuperlayer];
         self.layer.mask = nil;
